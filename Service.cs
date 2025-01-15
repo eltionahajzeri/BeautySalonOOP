@@ -1,6 +1,13 @@
 ﻿namespace BeautySalonOOP
 {
-    public class Service
+    public interface IService
+    {
+        void DisplayService();
+        string Name { get; set; }
+        decimal Price { get; set; }
+    }
+
+    public class Service : IService
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -17,14 +24,37 @@
         }
     }
 
-    public class HaircutService : Service
+    public class HaircutService : IService
     {
-        public HaircutService() : base("Haircut", 30.00m) { }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+
+        public HaircutService()
+        {
+            Name = "Haircut";
+            Price = 30.00m;
+        }
+
+        public void DisplayService()
+        {
+            Console.WriteLine($"{Name} - ${Price} for a haircut.");
+        }
     }
 
-    public class SkincareService : Service
+    public class SkincareService : IService
     {
-        public SkincareService() : base("Skincare", 40.00m) { }
-    }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
 
+        public SkincareService()
+        {
+            Name = "Skincare";
+            Price = 40.00m;
+        }
+
+        public void DisplayService()
+        {
+            Console.WriteLine($"{Name} - ${Price} for a skincare service.");
+        }
+    }
 }

@@ -4,10 +4,10 @@
     // Klasa e sallonit qe mban sherbimet dhe rezervimet
     public class Salon
     {
-        private Service haircut = new Service("Haircut", 30.00m);
-        private Service makeup = new Service("Makeup", 50.00m);
-        private Service skincare = new Service("Skincare", 40.00m);
-        private Service manicure = new Service("Manicure", 20.00m);
+        private IService haircut = new Service("Haircut", 30.00m);
+        private IService makeup = new Service("Makeup", 50.00m);
+        private IService skincare = new Service("Skincare", 40.00m);
+        private IService manicure = new Service("Manicure", 20.00m);
 
         private Reservation reservation1;
         private Reservation reservation2;
@@ -16,7 +16,7 @@
         private Reservation reservation5;
 
         // Metoda per mi marr sherbimet ne baze te emrit 
-        private Service GetServiceByName(string serviceName)
+        private IService GetServiceByName(string serviceName)
         {
             if (serviceName == haircut.Name) return haircut;
             if (serviceName == makeup.Name) return makeup;
@@ -28,7 +28,7 @@
         // Metoda per me kontrollu a ka vend per rezervime dhe a ekzistojne ato sherbime 
         public void BookReservation(string customerName, string serviceName, DateTime date)
         {
-            Service selectedService = GetServiceByName(serviceName);
+            IService selectedService = GetServiceByName(serviceName);
 
             if (selectedService == null)
             {

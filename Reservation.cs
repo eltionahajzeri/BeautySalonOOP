@@ -3,10 +3,10 @@
     public class Reservation
     {
         public string CustomerName { get; }
-        public Service Service { get; }
+        public IService Service { get; }
         public DateTime Date { get; }
 
-        public Reservation(string customerName, Service service, DateTime date)
+        public Reservation(string customerName, IService service, DateTime date)
         {
             CustomerName = customerName;
             Service = service;
